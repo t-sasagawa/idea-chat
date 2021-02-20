@@ -32,7 +32,7 @@
 
 .rooms {
   background-color: #2F3E51;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 100px - 90px);
   padding: 0 20px;
   overflow: scroll;
 }
@@ -44,6 +44,22 @@
 .room-name a {
   text-decoration: none;
   color: white;
+}
+
+.side-bar-footer {
+  background-color: #253141;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  padding: 0 20px;
+}
+
+.footer-name a {
+  display: block;
+  font-size: 16px;
+  color: #FAFAFA;
+  text-decoration: none;
 }
 
 .chat {
