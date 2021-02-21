@@ -8,10 +8,16 @@ IdeaChat （アイディアチャット）
 特定のチャット部屋を立ち上げ（または入室す）ることで匿名の第三者と１対１で意見交換することができます。
 
 ## URL
-製作中のためまだございません。
+https://idea-chat-32551.herokuapp.com/
 
 ## テスト用アカウント
-製作中のためまだございません。
+nickname: テストユーザー１
+email:    test@user.com
+password: test111
+
+nickname: テストユーザー２
+email:    test@user2.com
+password: test222
 
 ## 利用方法
 登録したユーザーのみが、チャットルームを作成・入室・削除権限を持ちます。
@@ -20,8 +26,9 @@ IdeaChat （アイディアチャット）
 退出することで、チャットルームは自動で削除され、チャットログが残りません。
 
 ## 目指した課題解決
-自分だけのアイディアを考えたけれど、第三者の意見が聞きたい、相談したい。
-相談したいが、不特定多数の人に見られたくない、内容を残したくない。
+自分だけのアイディアを閃いたけど、第三者の意見が聞きたい、相談したい人向けのアプリケーションです。
+相談はしたいけど、不特定多数の人に見られたくない、内容をいつまでもデータベースに残したくない人にオススメ。
+CtoBとして企業への売り込みも出来るのではないかと考えました。
 
 ## 洗い出した要件
 | 機能                   | 目的                       | 詳細                 | ストーリー                                         |
@@ -31,8 +38,8 @@ IdeaChat （アイディアチャット）
 | チャット投稿機能       | チャット機能の提供         | Createで投稿される   | 送信ボタンを押すことで投稿内容が反映される         |
 | チャットルーム削除機能 | チャットログを残さないため | destroyで削除される  | チャットルームから退出することで削除される         |
 
-## 実装した機能についてのGIFと説明
-作成中のためまだございません。
+## 実装した機能について（イメージ）
+![idea-chat](images/idea-chat01.png "idea-chat")
 
 ## 追加実装の機能（予定）
 | 機能                         | 目的                       | 詳細             | ストーリー                                     |
@@ -46,7 +53,7 @@ IdeaChat （アイディアチャット）
 
 
 # データベース設計
-ER図を御覧ください。
+![idea-chat](images/idea-chat-dio.png "idea-chat")
 
 # テーブル設計
 
@@ -60,41 +67,30 @@ ER図を御覧ください。
 
 ### Association
 
-- has_many :room_users
-- has_many :rooms, through: room_users
+- has_many :rooms
 - has_many :messages
 
 ## rooms テーブル
 
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| name   | string | null: false |
+| Column  | Type       | Options           |
+| ------- | ---------- | ----------------- |
+| name    | string     | null: false       |
+| user_id | references | foreign_key: true |
 
 ### Association
 
-- has_many :room_users
 - belongs_to :user
 - has_many :messages
 
-## room_users テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| room   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :room
-- belongs_to :user
-
 ## messages テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| content | string     |                                |
-| user    | references | null: false, foreign_key: true |
-| room    | references | null: false, foreign_key: true |
+| Column     | Type           | Options                        |
+| ---------- | -------------- | ------------------------------ |
+| content    | string         |                                |
+| user_id    | references     | null: false, foreign_key: true |
+| room_id    | references     | null: false, foreign_key: true |
+| image      | active_storage |                                |
+
 
 ### Association
 
