@@ -46,6 +46,10 @@
   color: white;
 }
 
+.room-list {
+  margin: 1em 0px;
+}
+
 .side-bar-footer {
   background-color: #253141;
   display: flex;

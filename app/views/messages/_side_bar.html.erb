@@ -3,21 +3,24 @@
     <a href="#">Idea-Chat</a>
   </div>
   <div class="create-room">
-    <a href="#">チャットを作成する</a>
+    <%= link_to "チャットを作成する", new_room_path %>
   </div>
 </div>
 
 <div class="rooms">
-<div class="room">
-    <div class="room-name">
-      <a href="#">chatroom1</a>
+    <div class="room">
+      <ul class="room-name">
+        <% if @rooms.exists? %>
+          <% @rooms.each do |room| %>
+          <li class = "room-list">
+          <%= link_to rooms_path(room) do %>
+          <%= room.name %>
+          <% end %>
+          </li>
+          <% end %>
+        <% end %>
+      </ul>
     </div>
-  </div>
-  <div class="room">
-    <div class="room-name">
-      <a href="#">chatroom2</a>
-    </div>
-  </div>
 </div>
 
 <div class="side-bar-footer">
