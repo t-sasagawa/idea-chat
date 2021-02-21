@@ -13,7 +13,7 @@
         <% if @rooms.exists? %>
           <% @rooms.each do |room| %>
           <li class = "room-list">
-          <%= link_to rooms_path(room) do %>
+          <%= link_to room_messages_path(room) do %>
           <%= room.name %>
           <% end %>
           </li>
