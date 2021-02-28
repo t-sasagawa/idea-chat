@@ -174,3 +174,30 @@
 .hidden {
   display: none;
 }
+
+.blend {
+  background-image: url(information01.jpg);
+  background-size: cover;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 400px;
+  /* padding-top: ; */
+}
+
+.blend p {
+  mix-blend-mode: difference;
+  /* background-clip: text; */
+  /* -webkit-background-clip: text; */
+  /* text-align: center; */
+
+  font-size: 100px;
+  color: #fff;
+}
+
+/* .information {
+} */
+
+.information-title {
+  margin: 50px;
+}
