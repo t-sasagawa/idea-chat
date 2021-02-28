@@ -176,7 +176,8 @@
 }
 
 .blend {
-  background-image: url(information01.jpg);
+  background-image: url('information01.jpg');
+  /* background-image: image-url(''); */
   background-size: cover;
   /* background-position: center; */
   background-repeat: no-repeat;
